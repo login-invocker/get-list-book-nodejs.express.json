@@ -10,9 +10,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 //config dinh tuyen
-app.get(`/`, (req, res) =>  res.send("xin chao tan"));
+app.get(`/`, (req, res) =>  res.send(`
+xin chao. Get /getbook to show list book
+and use post man to check list respont.
+thank you!
+`));
 bookController(app);
-//setupController(app);
+
 app.listen(port, () => {
     console.log("app lissten on post :"+port);
 });
