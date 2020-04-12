@@ -3,18 +3,16 @@ var bodyParser = require(`body-parser`);
 var bookController = require(`./api/controller/BookController`);
 var app = express();
 const bookModel = require(`./api/model/book`)
+
+
 var port = process.env.PORT || 3000;
 app.use("/assets", express.static(__dirname + `/public`));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.set("view engine", "ejs");
 
 //config dinh tuyen
-app.get(`/`, (req, res) =>  res.send(`
-xin chao. Get /getbook to show list book
-and use post man to check list respont.
-thank you!
-`));
+app.get(`/`, (req, res) =>  res.render(`index`));
 bookController(app);
 
 app.listen(port, () => {
